@@ -1,9 +1,21 @@
 <?php
 include '../db.inc.php';
 session_start();
+if(!isset($_SESSION["userid"]))
+	header ('Location: ../ib');
+
 
 if(isset($_POST['action']))
 {
+
+if($_POST['itemname']=='')
+{
+	$msg='Sorry! Please Enter a Value';
+	include 'queryforlist.inc.php';
+	include 'list.html.php';
+	exit();
+}
+
 $itemname=$_POST['itemname'];
 $category=$_POST['category'];
 
